@@ -9,8 +9,11 @@
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body{height:100%;overflow:hidden;background:#12051f;color:#ffe9b8;font-family:'Poppins',sans-serif}
 body{background:radial-gradient(ellipse at 50% 100%,#5a1a2e 0%,#2a0b3d 45%,#12051f 100%)}
+#stars{position:fixed;inset:0;z-index:0}
+#stars i{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;animation:tw 3s infinite}
+@keyframes tw{50%{opacity:.1}}
 canvas{position:fixed;inset:0;pointer-events:none;z-index:1}
-.screen{position:fixed;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;z-index:2;gap:14px}
+.screen{position:fixed;inset:0;display:none;flex-direction:column;align-items:center;justify-content:safe center;text-align:center;padding:60px 20px 40px;z-index:2;gap:14px;overflow-y:auto}
 .screen.on{display:flex;animation:fade .8s}
 @keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1}}
 h2{font-family:'Tiro Devanagari Hindi',serif;font-weight:400;color:#ffc54d;letter-spacing:2px;font-size:1rem}
@@ -18,42 +21,49 @@ h1{font-family:'Tiro Devanagari Hindi',serif;font-size:3rem;color:#ffd978;text-s
 p{opacity:.85;font-weight:300}
 .hint{font-size:.85rem;opacity:.6;animation:pulse 2s infinite}
 @keyframes pulse{50%{opacity:.2}}
-button{background:linear-gradient(135deg,#ff9a1f,#ffcf5a);color:#3a1200;border:0;border-radius:30px;padding:13px 28px;font:600 1rem 'Poppins';cursor:pointer;box-shadow:0 0 22px #ff9a1f88}
+button{background:linear-gradient(135deg,#ff9a1f,#ffcf5a);color:#3a1200;border:0;border-radius:30px;padding:12px 24px;font:600 .95rem 'Poppins';cursor:pointer;box-shadow:0 0 22px #ff9a1f88}
 button.ghost{background:transparent;color:#ffd978;border:1px solid #ffd97888;box-shadow:none}
-input,textarea{width:100%;max-width:320px;padding:13px 16px;border-radius:14px;border:1px solid #ffd97855;background:#ffffff12;color:#fff;font:1rem 'Poppins';outline:0;text-align:center}
-textarea{resize:none;height:80px}
+input,textarea{width:100%;max-width:320px;padding:12px 16px;border-radius:14px;border:1px solid #ffd97855;background:#ffffff12;color:#fff;font:1rem 'Poppins';outline:0;text-align:center}
+textarea{resize:none;height:76px}
 .row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-/* diya */
 .diya{position:relative;width:150px;height:110px;cursor:pointer;margin:20px}
 .bowl{position:absolute;bottom:0;left:0;width:150px;height:58px;background:linear-gradient(#e0782a,#8a3410);border-radius:0 0 75px 75px/0 0 58px 58px;box-shadow:0 10px 30px #0008}
 .bowl:before{content:"";position:absolute;top:-12px;left:0;width:150px;height:26px;background:#f08a35;border-radius:50%}
 .bowl:after{content:"";position:absolute;top:-6px;left:12px;width:126px;height:16px;background:#4a1a08;border-radius:50%}
 .wick{position:absolute;left:50%;bottom:50px;width:4px;height:16px;background:#222;transform:translateX(-50%);border-radius:2px}
-.flame{position:absolute;left:50%;bottom:62px;width:30px;height:62px;transform:translateX(-50%) scale(0);transform-origin:bottom;background:radial-gradient(ellipse at 50% 75%,#fff6c0,#ffb92e 55%,#ff5a0a);border-radius:50% 50% 50% 50%/65% 65% 35% 35%;filter:drop-shadow(0 0 25px #ff9a1f);transition:transform .6s}
+.flame{position:absolute;left:50%;bottom:62px;width:30px;height:62px;transform:translateX(-50%) scale(0);transform-origin:bottom;background:radial-gradient(ellipse at 50% 75%,#fff6c0,#ffb92e 55%,#ff5a0a);border-radius:50%/65% 65% 35% 35%;filter:drop-shadow(0 0 25px #ff9a1f);transition:transform .6s}
 .lit .flame{transform:translateX(-50%) scale(1);animation:flick .15s infinite alternate}
 @keyframes flick{from{transform:translateX(-50%) scale(1,1) rotate(-2deg)}to{transform:translateX(-50%) scale(.94,1.06) rotate(2deg)}}
 .glow{position:absolute;left:50%;bottom:20px;width:380px;height:380px;transform:translateX(-50%);background:radial-gradient(#ff9a1f55,transparent 65%);opacity:0;transition:opacity 1s;pointer-events:none}
 .lit .glow{opacity:1}
-/* letter */
 .env{font-size:5rem;cursor:pointer;animation:bob 2.5s ease-in-out infinite}
 @keyframes bob{50%{transform:translateY(-10px)}}
-.letter{background:linear-gradient(#fff4d6,#f7dfa4);color:#4a1a08;border-radius:18px;padding:28px 24px;max-width:340px;font-family:'Tiro Devanagari Hindi',serif;font-size:1.1rem;line-height:1.7;box-shadow:0 0 50px #ff9a1f66}
-.letter b{display:block;font-size:1.4rem;margin-bottom:8px}
-.lantern{position:fixed;bottom:-80px;font-size:2.6rem;z-index:3;animation:up 9s linear forwards;filter:drop-shadow(0 0 14px #ff9a1f)}
+.card{position:relative;background:linear-gradient(160deg,#fff4d6,#f7dfa4);color:#4a1a08;border-radius:20px;padding:26px 22px;width:100%;max-width:340px;font-family:'Tiro Devanagari Hindi',serif;font-size:1.05rem;line-height:1.7;box-shadow:0 0 50px #ff9a1f66;border:3px double #c8841a}
+.card b{display:block;font-size:1.4rem;margin-bottom:6px}
+.card .top{font-size:2rem;letter-spacing:6px;margin-bottom:6px}
+.card .sig{margin-top:10px;font-style:italic}
+.lantern{position:fixed;bottom:-80px;font-size:2.6rem;z-index:3;animation:up 9s linear forwards;filter:drop-shadow(0 0 14px #ff9a1f);pointer-events:none}
 @keyframes up{to{transform:translateY(-120vh) translateX(30px);opacity:0}}
-#snd{position:fixed;top:calc(14px + env(safe-area-inset-top,0px));right:16px;z-index:5;background:#ffffff18;border:0;border-radius:50%;width:42px;height:42px;padding:0;font-size:1.1rem;color:#fff;box-shadow:none}
-footer{position:fixed;bottom:calc(10px + env(safe-area-inset-bottom,0px));width:100%;text-align:center;font-size:.7rem;opacity:.5;z-index:4}
+#rkt{font-size:6rem;cursor:pointer;display:inline-block;transform:rotate(-45deg);animation:rb 1.6s ease-in-out infinite;filter:drop-shadow(0 0 22px #ff9a1f)}
+#rkt.go{animation:fly 1.3s cubic-bezier(.5,0,1,.6) forwards}
+@keyframes rb{50%{transform:rotate(-45deg) translate(6px,-12px)}}
+@keyframes fly{to{transform:rotate(-45deg) translate(260px,-1400px)}}
+#snd{position:fixed;top:calc(14px + env(safe-area-inset-top,0px));right:16px;z-index:5;background:#ffffff18;border-radius:50%;width:42px;height:42px;padding:0;font-size:1.1rem;color:#fff;box-shadow:none}
+#cnt{position:fixed;inset:0;z-index:6;display:none;align-items:center;justify-content:center;font:700 7rem 'Poppins';color:#ffd978;text-shadow:0 0 40px #ff9a1f;pointer-events:none}
+footer{position:fixed;bottom:calc(8px + env(safe-area-inset-bottom,0px));width:100%;text-align:center;font-size:.7rem;opacity:.5;z-index:4;pointer-events:none}
 </style>
 </head>
 <body>
+<div id="stars"></div>
 <canvas id="fx"></canvas>
+<div id="cnt"></div>
 <button id="snd">🔊</button>
 
 <section class="screen on" id="s0">
   <h2>शुभ दीपावली</h2>
   <h1>जगमग दिवाली</h1>
   <p>रोशनी का त्योहार आ गया</p>
-  <p style="font-size:2rem">🌹🌹</p>
+  <p style="font-size:2rem">🌹🚀🌹</p>
   <p class="hint">Tap to begin</p>
 </section>
 
@@ -63,15 +73,22 @@ footer{position:fixed;bottom:calc(10px + env(safe-area-inset-bottom,0px));width:
   <div class="diya" id="diya"><div class="glow"></div><div class="flame"></div><div class="wick"></div><div class="bowl"></div></div>
 </section>
 
+<section class="screen" id="sr">
+  <h2>शुभ दीपावली</h2>
+  <p>Now launch the rocket 🚀</p>
+  <div id="rkt">🚀</div>
+  <p class="hint" id="rht">Tap the rocket to launch it</p>
+</section>
+
 <section class="screen" id="s2">
   <h2>शुभ दीपावली</h2>
   <p>Who should we send this light to?</p>
-  <input id="to" placeholder="Their name" maxlength="30">
-  <input id="from" placeholder="Your name" maxlength="30">
-  <textarea id="msg" placeholder="Your secret message (optional)" maxlength="200"></textarea>
+  <input id="to" maxlength="30" placeholder="Write your name">
+  <input id="from" value="Ayush" maxlength="30" placeholder="Your name">
+  <textarea id="msg" maxlength="200">आपको और आपके पूरे परिवार को दिवाली की हार्दिक शुभकामनाएँ! माँ लक्ष्मी की कृपा से आपके जीवन में सुख, समृद्धि और ढेर सारी रोशनी बनी रहे।</textarea>
   <button id="mk">Make card + link</button>
-  <div id="out" style="display:none;font-size:.8rem;word-break:break-all;max-width:320px"></div>
-  <div class="row" id="shr" style="display:none">
+  <div class="card" id="card" style="display:none"></div>
+  <div class="row" id="after" style="display:none">
     <button id="copy">Copy link</button>
     <button class="ghost" id="share">Share</button>
   </div>
@@ -84,12 +101,14 @@ footer{position:fixed;bottom:calc(10px + env(safe-area-inset-bottom,0px));width:
 </section>
 
 <section class="screen" id="s4">
-  <div class="letter" id="letter"></div>
+  <div class="card" id="letter"></div>
   <div class="row">
-    <button id="lan">Release lantern</button>
+    <button id="rk2">🚀 Launch rocket</button>
+    <button class="ghost" id="lan">Release lantern</button>
     <button class="ghost" id="sh2">Share</button>
     <button class="ghost" id="fw">More fireworks</button>
   </div>
+  <p class="hint">Tap anywhere — a rocket will fly there!</p>
 </section>
 
 <footer>Made with ✨ for you</footer>
@@ -99,47 +118,68 @@ const $=id=>document.getElementById(id);
 const q=new URLSearchParams(location.search);
 const TO=q.get('to'),FROM=q.get('from'),MSG=q.get('m');
 const receiver=!!TO;
+const DEF_MSG='आपको और आपके पूरे परिवार को दिवाली की हार्दिक शुभकामनाएँ! माँ लक्ष्मी की कृपा से आपके जीवन में सुख, समृद्धि और ढेर सारी रोशनी बनी रहे।';
 function show(n){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));$('s'+n).classList.add('on')}
+const esc=s=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+// twinkling stars
+for(let i=0;i<60;i++){const s=document.createElement('i');s.style.left=Math.random()*100+'%';s.style.top=Math.random()*70+'%';s.style.animationDelay=Math.random()*3+'s';$('stars').appendChild(s)}
 
 // sound
 let ac=null,muted=false;
-function tone(f,d=.6,v=.08){if(muted)return;try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();const o=ac.createOscillator(),g=ac.createGain();o.type='sine';o.frequency.value=f;g.gain.setValueAtTime(v,ac.currentTime);g.gain.exponentialRampToValueAtTime(.001,ac.currentTime+d);o.connect(g).connect(ac.destination);o.start();o.stop(ac.currentTime+d)}catch(e){}}
+function tone(f,d=.6,v=.08,type='sine',f2){if(muted)return;try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();const o=ac.createOscillator(),g=ac.createGain();o.type=type;o.frequency.setValueAtTime(f,ac.currentTime);if(f2)o.frequency.exponentialRampToValueAtTime(f2,ac.currentTime+d);g.gain.setValueAtTime(v,ac.currentTime);g.gain.exponentialRampToValueAtTime(.001,ac.currentTime+d);o.connect(g).connect(ac.destination);o.start();o.stop(ac.currentTime+d)}catch(e){}}
 function chime(){[523,659,784,1046].forEach((f,i)=>setTimeout(()=>tone(f,1.2),i*140))}
 $('snd').onclick=e=>{e.stopPropagation();muted=!muted;$('snd').textContent=muted?'🔇':'🔊'};
 
-// fireworks + sparkles
-const cv=$('fx'),cx=cv.getContext('2d');let P=[];
+// canvas: particles + rockets
+const cv=$('fx'),cx=cv.getContext('2d');let P=[],R=[];
 function rs(){cv.width=innerWidth;cv.height=innerHeight}rs();addEventListener('resize',rs);
-function burst(x,y,n=60){const h=Math.random()*60+25;for(let i=0;i<n;i++){const a=Math.random()*6.28,s=Math.random()*5+1.5;P.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,l:1,h})}tone(180+Math.random()*120,.4,.05)}
-function loop(){cx.clearRect(0,0,cv.width,cv.height);P=P.filter(p=>p.l>0);P.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.06;p.vx*=.985;p.l-=.013;cx.fillStyle=`hsla(${p.h},100%,60%,${p.l})`;cx.beginPath();cx.arc(p.x,p.y,2.2,0,6.28);cx.fill()});requestAnimationFrame(loop)}loop();
-function show_fw(n=6){for(let i=0;i<n;i++)setTimeout(()=>burst(Math.random()*cv.width,Math.random()*cv.height*.6+40),i*350)}
-addEventListener('pointerdown',e=>{if(e.target.closest('button,input,textarea'))return;burst(e.clientX,e.clientY,18)});
+function burst(x,y,n=70,shape){const h=Math.random()*360;for(let i=0;i<n;i++){let a=Math.random()*6.28,s=Math.random()*5+1.5;
+  if(shape==='ring'){a=i/n*6.28;s=4.5}
+  if(shape==='heart'){const t=i/n*6.28;P.push({x,y,vx:16*Math.pow(Math.sin(t),3)*.28,vy:-(13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t))*.28,l:1.2,h:340,g:.03});continue}
+  P.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,l:1,h:h+Math.random()*50,g:.06})}
+  tone(120+Math.random()*80,.5,.07,'sawtooth',50)}
+function rocket(tx,ty){const sx=tx+(Math.random()*80-40);R.push({x:sx,y:cv.height+10,tx,ty,vx:(tx-sx)/70,vy:-(cv.height-ty)/70});tone(300,.9,.05,'triangle',1400)}
+function launchMany(n=4){for(let i=0;i<n;i++)setTimeout(()=>rocket(Math.random()*cv.width*.8+cv.width*.1,Math.random()*cv.height*.4+60),i*450)}
+function loop(){cx.clearRect(0,0,cv.width,cv.height);
+  R=R.filter(r=>{r.x+=r.vx;r.y+=r.vy;
+    P.push({x:r.x,y:r.y+8,vx:Math.random()-.5,vy:Math.random()*1.5,l:.5,h:35,g:0});
+    cx.save();cx.translate(r.x,r.y);cx.rotate(Math.atan2(r.vy,r.vx)+Math.PI/2);cx.fillStyle='#ffd978';cx.fillRect(-3,-12,6,20);cx.fillStyle='#ff4d2e';cx.beginPath();cx.moveTo(-3,-12);cx.lineTo(0,-20);cx.lineTo(3,-12);cx.fill();cx.fillStyle='#ff9a1f';cx.beginPath();cx.moveTo(-3,8);cx.lineTo(0,18+Math.random()*8);cx.lineTo(3,8);cx.fill();cx.restore();
+    if(r.y<=r.ty){burst(r.x,r.y,80,['ring','heart',undefined][Math.floor(Math.random()*3)]);return false}return true});
+  P=P.filter(p=>p.l>0);
+  P.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=p.g;p.vx*=.985;p.l-=.013;cx.fillStyle=`hsla(${p.h},100%,62%,${Math.min(p.l,1)})`;cx.beginPath();cx.arc(p.x,p.y,2.2,0,6.28);cx.fill()});
+  requestAnimationFrame(loop)}loop();
+addEventListener('pointerdown',e=>{if(e.target.closest('button,input,textarea,.diya,.env'))return;rocket(e.clientX,e.clientY)});
 
-// flow
-let started=false;
-$('s0').onclick=()=>{if(started)return;started=true;tone(440,.5);show(1)};
-let lit=false;
-$('diya').onclick=()=>{if(lit)return;lit=true;$('diya').classList.add('lit');$('h1t').textContent='✨';chime();show_fw(4);
-  setTimeout(()=>show(receiver?3:2),2200)};
+// countdown + big rocket show
+function countdown(){const c=$('cnt');c.style.display='flex';let n=3;c.textContent=n;tone(500,.3);const t=setInterval(()=>{n--;if(n>0){c.textContent=n;tone(500,.3)}else{clearInterval(t);c.style.display='none';launchMany(7);chime()}},800)}
 
-$('mk').onclick=()=>{
-  const t=$('to').value.trim();if(!t){$('to').focus();return}
-  const u=new URL(location.href.split('?')[0].split('#')[0]);
-  u.searchParams.set('to',t);
-  if($('from').value.trim())u.searchParams.set('from',$('from').value.trim());
-  if($('msg').value.trim())u.searchParams.set('m',$('msg').value.trim());
-  link=u.toString();$('out').style.display='block';$('out').textContent=link;$('shr').style.display='flex';chime();show_fw(3)};
+// card
 let link=location.href;
+function makeLink(){const t=$('to').value.trim();const u=new URL(location.href.split('?')[0].split('#')[0]);u.searchParams.set('to',t);
+  if($('from').value.trim())u.searchParams.set('from',$('from').value.trim());
+  if($('msg').value.trim())u.searchParams.set('m',$('msg').value.trim());return u.toString()}
+function renderCard(){const t=$('to').value.trim(),f=$('from').value.trim(),m=$('msg').value.trim()||DEF_MSG;
+  $('card').innerHTML='<div class="top">🪔🪔🪔</div><b>शुभ दीपावली, '+esc(t)+'!</b>'+esc(m)+(f?'<div class="sig">— '+esc(f)+'</div>':'');link=makeLink()}
+$('mk').onclick=()=>{if(!$('to').value.trim()){$('to').focus();return}renderCard();$('card').style.display='block';$('after').style.display='flex';chime();launchMany(3);setTimeout(()=>$('card').scrollIntoView({behavior:'smooth',block:'center'}),100)};
 function doShare(){const text='🪔 आपके लिए एक दिवाली की रोशनी…';if(navigator.share)navigator.share({title:'जगमग दिवाली',text,url:link}).catch(()=>{});else copyL()}
 function copyL(){(navigator.clipboard?navigator.clipboard.writeText(link):Promise.reject()).then(()=>alert('Link copied!')).catch(()=>prompt('Copy this link:',link))}
 $('copy').onclick=copyL;$('share').onclick=doShare;$('sh2').onclick=doShare;
+$('rk2').onclick=countdown;
 
+// flow
+let started=false,lit=false;
+$('s0').onclick=()=>{if(started)return;started=true;tone(440,.5);show(1)};
+$('diya').onclick=()=>{if(lit)return;lit=true;$('diya').classList.add('lit');$('h1t').textContent='✨';chime();launchMany(3);
+  setTimeout(()=>show('r'),2200)};
+let flown=false;
+$('rkt').onclick=()=>{if(flown)return;flown=true;$('rkt').classList.add('go');$('rht').textContent='🔥 3 · 2 · 1 …';tone(250,1.3,.08,'triangle',1800);
+  setTimeout(()=>{burst(innerWidth*.6,innerHeight*.18,110,'ring');launchMany(5);chime()},1100);
+  setTimeout(()=>show(receiver?3:2),2800)};
 $('env').onclick=()=>{
-  const body=MSG||'आपके घर में सुख, समृद्धि और ढेर सारी खुशियाँ आएँ। माँ लक्ष्मी की कृपा हमेशा बनी रहे। शुभ दीपावली! 🪔';
-  const esc=s=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  $('letter').innerHTML='<b>प्रिय '+esc(TO)+',</b>'+esc(body)+(FROM?'<br><br>— '+esc(FROM):'');
-  link=location.href;show(4);chime();show_fw(6)};
-$('fw').onclick=()=>show_fw(8);
+  $('letter').innerHTML='<div class="top">🪔🪔🪔</div><b>प्रिय '+esc(TO)+',</b>'+esc(MSG||DEF_MSG)+(FROM?'<div class="sig">— '+esc(FROM)+'</div>':'');
+  link=location.href;show(4);chime();launchMany(5)};
+$('fw').onclick=()=>launchMany(8);
 $('lan').onclick=()=>{for(let i=0;i<5;i++)setTimeout(()=>{const l=document.createElement('div');l.className='lantern';l.textContent='🏮';l.style.left=(8+Math.random()*80)+'vw';document.body.appendChild(l);setTimeout(()=>l.remove(),9000)},i*400);tone(660,1)};
 </script>
 </body>
